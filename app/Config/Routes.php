@@ -11,3 +11,6 @@ $routes->match(['POST', 'GET'], '/', 'Auth::index');
 $routes->get('logout', 'Auth::Logout');
 
 //Dashboard
+$routes->group('dashboard', ['filter' => 'auth'], function($routes) { 
+    $routes->get('/', 'Dashboard::index');
+});

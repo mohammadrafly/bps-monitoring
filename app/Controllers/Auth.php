@@ -56,10 +56,10 @@ class Auth extends BaseController
         }
 
         $data = [
-            'title' => 'Login Page'
+            'title' => 'Login'
         ];
 
-        return view('Auth/Login', $data);
+        return view('pages/auth/SignIn', $data);
     }
 
     public function Logout()
