@@ -1,9 +1,11 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
-    --secondary: #191C24;
+    --primary: #25b4e7;
+    --secondary: #ffffff;
+    --white: #ffffff;
     --light: #6C7293;
     --dark: #000000;
+    --orange: #f59e33;
 }
 
 .back-to-top {
@@ -71,7 +73,7 @@
     width: 250px;
     height: 100vh;
     overflow-y: auto;
-    background: var(--secondary);
+    background: var(--primary);
     transition: 0.5s;
     z-index: 999;
 }
@@ -79,7 +81,7 @@
 .content {
     margin-left: 250px;
     min-height: 100vh;
-    background: var(--dark);
+    background: var(--secondary);
     transition: 0.5s;
 }
 
@@ -121,7 +123,7 @@
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
     padding: 7px 20px;
-    color: var(--light);
+    color: var(--white);
     font-weight: 500;
     border-left: 3px solid var(--secondary);
     border-radius: 0 30px 30px 0;
@@ -130,9 +132,9 @@
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
-    background: var(--dark);
-    border-color: var(--primary);
+    color: var(--white);
+    background: var(--orange);
+    border-color: var(--white);
 }
 
 .sidebar .navbar .navbar-nav .nav-link i {
@@ -143,11 +145,6 @@
     justify-content: center;
     background: var(--dark);
     border-radius: 40px;
-}
-
-.sidebar .navbar .navbar-nav .nav-link:hover i,
-.sidebar .navbar .navbar-nav .nav-link.active i {
-    background: var(--secondary);
 }
 
 .sidebar .navbar .dropdown-toggle::after {
@@ -168,7 +165,7 @@
 .sidebar .navbar .dropdown-item {
     padding-left: 25px;
     border-radius: 0 30px 30px 0;
-    color: var(--light);
+    color: var(--white);
 }
 
 .sidebar .navbar .dropdown-item:hover,
@@ -179,13 +176,12 @@
 .content .navbar .navbar-nav .nav-link {
     margin-left: 25px;
     padding: 12px 0;
-    color: var(--light);
+    color: var(--white);
     outline: none;
 }
 
-.content .navbar .navbar-nav .nav-link:hover,
 .content .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: var(--white);
 }
 
 .content .navbar .sidebar-toggler,
@@ -200,7 +196,7 @@
 }
 
 .content .navbar .dropdown-item {
-    color: var(--light);
+    color: var(--white);
 }
 
 .content .navbar .dropdown-item:hover,

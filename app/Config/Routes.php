@@ -13,4 +13,16 @@ $routes->get('logout', 'Auth::Logout');
 //Dashboard
 $routes->group('dashboard', ['filter' => 'auth'], function($routes) { 
     $routes->get('/', 'Dashboard::index');
+    //UserOps
+    $routes->group('users', function($routes) {
+        $routes->match(['POST', 'GET'], '/', 'User::index');
+        $routes->match(['POST', 'GET'], 'edit/(:num)', 'User::edit/$1');
+        $routes->get('delete/(:num)', 'User::delete/$1');
+    });
+    //EmployeeOps
+    $routes->group('employee', function($routes) {
+        $routes->match(['POST', 'GET'], '/', 'Employee::index');
+        $routes->match(['POST', 'GET'], 'edit/(:num)', 'Employee::edit/$1');
+        $routes->get('delete/(:num)', 'Employee::delete/$1');
+    });
 });

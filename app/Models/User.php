@@ -14,7 +14,7 @@ class User extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nama',
+        'name',
         'username',
         'password',
         'role',

@@ -7,13 +7,19 @@ use CodeIgniter\Model;
 class Employee extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'employees';
+    protected $table            = 'employee';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'nama_ks',
+        'nama_petugas',
+        'target',
+        'realisasi',
+        'total_absolut',
+    ];
 
     // Dates
     protected $useTimestamps = false;

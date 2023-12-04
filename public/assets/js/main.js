@@ -1,5 +1,13 @@
 const base_url = "http://localhost:8080/";
 
+function openCustomModal(modalId) {
+    $('#' + modalId).modal('show');
+}
+
+$('#modal').on('hidden.bs.modal', function () {
+    location.reload();
+});
+
 function signOut() {
     Swal.fire({
         title: 'Are you sure?',
