@@ -14,6 +14,7 @@ class Dashboard extends BaseController
         $employee = new Employee();
         return view('pages/dashboard/index', [
             'user' => $user->countAll(),
+            'data' => $employee->findAll(),
             'employee' => $employee->countAll()
         ]);
     }
