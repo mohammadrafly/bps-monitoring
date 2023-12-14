@@ -2,23 +2,23 @@
 
 <?= $this->section('content') ?>  
 
-            <div class="container-fluid pt-4 px-4">
+            <div class="container-fluid pt-4 px-4" style="background-color: #F5F7F8">
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-6">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-user fa-3x text-primary"></i>
+                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-users fa-3x text-secondary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Total Operator</p>
-                                <h6 class="mb-0"><?= $user ?></h6>
+                                <h6 class="mb-0 text-muted text-center"><?= $user ?></h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-6">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-users fa-3x text-primary"></i>
+                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-book fa-3x text-secondary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Progress Operator</p>
-                                <h6 class="mb-0"><?= $employee ?></h6>
+                                <h6 class="mb-0 text-muted text-center"><?= $employee ?></h6>
                             </div>
                         </div>
                     </div>
@@ -26,10 +26,10 @@
             </div>
             <!-- Sale & Revenue End -->
 
-            <div class="container-fluid pt-4 px-4">
+            <div class="container-fluid pt-4 px-4"  style="background-color: #F5F7F8">
                 <div class="row g-4">
                     <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
+                        <div class="bg-white rounded h-100 p-4">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -38,7 +38,7 @@
                                             <th scope="col">Nama Petugas</th>
                                             <th scope="col">Target</th>
                                             <th scope="col">Absolut</th>
-                                            <th scope="col">Realisasi</th>
+                                            <th scope="col">Realisasi (%)</th>
                                         </tr>
                                     </thead>
                                     <tbody>

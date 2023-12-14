@@ -42,7 +42,7 @@
         <!-- Spinner End -->
 
         <!-- Content Start -->
-        <div class="content">
+        <div class="content"  style="background-color: #F5F7F8"x>
 
             <?= $this->include('layout/partials/sidebar') ?>
 

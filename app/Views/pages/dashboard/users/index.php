@@ -75,7 +75,7 @@
                                                     <i class="fas fa-edit"></i> Edit
                                                 </button>
                                                 <button onclick="deleteData(<?= $row['id'] ?>)" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                    <i class="fas fa-trash"></i> Hapus
                                                 </button>
                                             </td>
                                         </tr>
