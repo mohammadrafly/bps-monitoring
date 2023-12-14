@@ -19,13 +19,13 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="<?= base_url('dashboard') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard')) echo 'active'; ?>">
-                        <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                        <i class="fa fa-tachometer-alt me-2"></i>Beranda
                     </a>
                     <a href="<?= base_url('dashboard/employee') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard/employee')) echo 'active'; ?>">
-                        <i class="fa fa-th me-2"></i>Employee
+                        <i class="fa fa-th me-2"></i>Progres Operator
                     </a>
                     <a href="<?= base_url('dashboard/users') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard/users')) echo 'active'; ?>">
-                        <i class="fa fa-keyboard me-2"></i>Users
+                        <i class="fa fa-keyboard me-2"></i>Pengguna
                     </a>
                 </div>
             </nav>

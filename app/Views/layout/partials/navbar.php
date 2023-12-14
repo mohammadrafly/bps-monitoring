@@ -14,9 +14,9 @@
                             <span class="d-none d-lg-inline-flex"><?= session()->get('username') ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="javascript:void(0);" onclick="signOut()" class="dropdown-item">Log Out</a>
+                            <a href="#" class="dropdown-item">Profil</a>
+                            <a href="#" class="dropdown-item">Pengaturan</a>
+                            <a href="javascript:void(0);" onclick="signOut()" class="dropdown-item">Keluar</a>
                         </div>
                     </div>
                 </div>

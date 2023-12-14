@@ -8,7 +8,7 @@
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4"><?= $title ?></h6>
                             <button type="button" class="btn btn-primary mb-4" onclick="openCustomModal('modal')">
-                                Tambah Employee
+                                Tambah Progres
                             </button>
                             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -19,12 +19,12 @@
                                         <div class="modal-body">
                                             <form id="form">
                                                 <div class="form-group">
-                                                    <label for="inputName">Nama KS</label>
+                                                    <label for="inputName">Jenis KSA</label>
                                                     <input type="text" class="form-control bg-white" id="nama_ks" name="nama_ks" placeholder="Masukkan Nama KS">
                                                     <input hidden type="text" id="id" name="id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputName">Nama Petugas</label>
+                                                    <label for="inputName">Nama Operator</label>
                                                     <input type="text" class="form-control bg-white" id="nama_petugas" name="nama_petugas" placeholder="Masukkan Nama Petugas">
                                                 </div>
                                                 <div class="form-group">
@@ -42,7 +42,7 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button onclick="save()" class="btn btn-primary">Save changes</button>
+                                            <button onclick="save()" class="btn btn-primary">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -52,9 +52,9 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nama KS</th>
-                                            <th scope="col">Nama Petugas</th>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Jenis KSA</th>
+                                            <th scope="col">Nama Operator</th>
                                             <th scope="col">Target</th>
                                             <th scope="col">Realisasi</th>
                                             <th scope="col">Total Absolut</th>

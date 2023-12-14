@@ -8,7 +8,7 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total User</p>
+                                <p class="mb-2">Total Operator</p>
                                 <h6 class="mb-0"><?= $user ?></h6>
                             </div>
                         </div>
@@ -17,7 +17,7 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-users fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Employee</p>
+                                <p class="mb-2">Progress Operator</p>
                                 <h6 class="mb-0"><?= $employee ?></h6>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">No</th>
                                             <th scope="col">Nama Petugas</th>
                                             <th scope="col">Target</th>
                                             <th scope="col">Absolut</th>

@@ -50,7 +50,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">No</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Username</th>
                                             <th scope="col">Role</th>
