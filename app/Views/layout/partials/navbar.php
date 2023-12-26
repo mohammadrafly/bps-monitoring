@@ -1,23 +1,42 @@
-            <nav class="navbar navbar-expand bg-green navbar-dark sticky-top px-4 py-0">
-                <a href="#" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0">
-                        <img src="<?= base_url('assets/img/logo.png') ?>">
-                    </h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="<?= base_url('assets/img/user.jpg') ?>" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?= session()->get('username') ?></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="javascript:void(0);" onclick="signOut()" class="dropdown-item">Log Out</a>
-                        </div>
+<nav class="bg-white text-gray-800 p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo" class="h-8 w-auto mr-2">
+            <span class="text-2xl font-bold">BPS-M</span>
+        </div>
+        <!-- Profile Dropdown -->
+        <div class="relative">
+            <button class="flex items-center focus:outline-none">
+                <?php if(!session()->get('profile')): ?>
+                    <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                        <?php
+                        $name = session()->get('name');
+                        $initials = '';
+
+                        if (!empty($name)) {
+                            $words = explode(' ', $name);
+
+                            foreach ($words as $word) {
+                                $initials .= strtoupper($word[0]);
+                            }
+                        }
+                        ?>
+                        <span class="font-medium text-gray-600 dark:text-gray-300"><?= $initials ?></span>
                     </div>
-                </div>
-            </nav>
+                <?php else: ?>
+                <img src="<?= base_url('assets/img/user.jpg') ?>" alt="Profile" class="h-8 w-8 rounded-full">
+                <?php endif ?>
+                <span class="ml-2 text-sm font-medium"><?= session()->get('name') ?></span>
+                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <!-- Dropdown Content -->
+            <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-md hidden">
+                <a href="<?= base_url('dashboard/profile/update/'.session()->get('id')) ?>" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100">Profile</a>
+                <a href="<?= base_url('dashboard/profile/update/password/'.session()->get('id')) ?>" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100">Ganti Password</a>
+                <a href="javascript:void(0);" onclick="signOut()" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -24,5 +24,11 @@ $routes->group('dashboard', ['filter' => 'auth'], function($routes) {
         $routes->match(['POST', 'GET'], '/', 'Employee::index');
         $routes->match(['POST', 'GET'], 'edit/(:num)', 'Employee::edit/$1');
         $routes->get('delete/(:num)', 'Employee::delete/$1');
+        $routes->post('export', 'Employee::export');
+    });
+    //ProfileOps
+    $routes->group('profile', function($routes) {
+        $routes->match(['POST', 'GET'], 'update/(:any)', 'Dashboard::profile/$1');
+        $routes->post('update/password/(:any)', 'Dashboard::changePassword/$1');
     });
 });

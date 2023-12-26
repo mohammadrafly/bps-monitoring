@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Employee as EmployeeModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Employee extends BaseController
 {
@@ -59,7 +61,6 @@ class Employee extends BaseController
             } else {
                 return $this->createResponse(false, 'error', 'Failed', 'Employee gagal diupdate.');
             }
-            
         }
 
         return $this->response->setJSON([
@@ -74,5 +75,31 @@ class Employee extends BaseController
             return $this->createResponse(true, 'error', 'Failed', 'gagal menghapus employee.');
         } 
         return $this->createResponse(true, 'success', 'Success', 'berhasil menghapus employee.');
+    }
+
+    public function export()
+    {
+        $model = new EmployeeModel();
+
+        $start = date('Y-m-d', strtotime($this->request->getVar('start')));
+        $end = date('Y-m-d', strtotime($this->request->getVar('end')));        
+        
+        $data = $model->getDataByRangeDate($start, $end);
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $header = array_keys($data[0]);
+        $sheet->fromArray([$header], null, 'A1');
+
+        $sheet->fromArray($data, null, 'A2');
+
+        $response = $this->response->setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        $filename = 'export_' . date('YmdHis') . '.xlsx';
+        $response->setHeader('Content-Disposition', 'attachment;filename="' . $filename . '"');
+        
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
     }
 }

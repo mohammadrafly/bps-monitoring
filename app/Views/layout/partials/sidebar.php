@@ -1,33 +1,22 @@
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-secondary navbar-dark">
-                <a href="#" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-white">
-                        <img src="<?= base_url('assets/img/logo.png') ?>" style="width: 50px; heigth: 50px;">
-                        BPS-M
-                    </h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="<?= base_url('assets/img/user.jpg') ?>" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"><?= session()->get('username') ?></h6>
-                        <span><?= session()->get('role') ?></span>
-                    </div>
-                </div>
-                <div class="navbar-nav w-100">
-                    <a href="<?= base_url('dashboard') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard')) echo 'active'; ?>">
-                        <i class="fa fa-tachometer-alt me-2"></i>Dashboard
-                    </a>
-                    <a href="<?= base_url('dashboard/employee') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard/employee')) echo 'active'; ?>">
-                        <i class="fa fa-th me-2"></i>Employee
-                    </a>
-                    <a href="<?= base_url('dashboard/users') ?>" class="nav-item nav-link <?php if(current_url() == base_url('dashboard/users')) echo 'active'; ?>">
-                        <i class="fa fa-keyboard me-2"></i>Users
-                    </a>
-                </div>
-            </nav>
-        </div>
-        <!-- Sidebar End -->
+<nav class="bg-white text-gray-600 w-64 min-h-screen p-4">
+    <div class="space-y-4 font-medium">
+        <a href="<?= base_url('dashboard') ?>" class="flex py-2 px-4 rounded-lg hover:bg-bps-green-fade hover:text-white <?= current_url() == base_url('dashboard') ? 'bg-bps-orange text-white' : '' ?>">
+            <svg class="w-5 h-5 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"/>
+            </svg>
+            Dashboard
+        </a>
+        <a href="<?= base_url('dashboard/employee') ?>" class="flex py-2 px-4 rounded-lg hover:bg-bps-green-fade hover:text-white <?= current_url() == base_url('dashboard/employee') ? 'bg-bps-orange text-white' : '' ?>">
+            <svg class="w-5 h-5 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"/>
+            </svg>
+            Employee
+        </a>
+        <a href="<?= base_url('dashboard/users') ?>" class="flex py-2 px-4 rounded-lg hover:bg-bps-green-fade hover:text-white <?= current_url() == base_url('dashboard/users') ? 'bg-bps-orange text-white' : '' ?>">
+            <svg class="w-5 h-5 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3a3 3 0 1 1-1.614 5.53M15 12a4 4 0 0 1 4 4v1h-3.348M10 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 11h3a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+            </svg>
+            Users
+        </a>
+    </div>
+</nav>

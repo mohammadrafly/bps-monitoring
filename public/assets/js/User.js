@@ -1,3 +1,17 @@
+$('#default-modal .close-button').on('click', function() {
+    hideModal();
+});
+
+function hideModal() {
+    $('#default-modal').addClass('hidden');
+    $('#form')[0].reset();
+    location.reload();
+}
+
+function showModal() {
+    $('#default-modal').removeClass('hidden');
+}
+
 function updateData(id) {
     save_method = 'update';
     $('#form')[0].reset(); 
@@ -12,10 +26,12 @@ function updateData(id) {
             $('[name="name"]').val(respond.data.name);
             $('[name="username"]').val(respond.data.username);
             $('[name="role"]').val(respond.data.role);
-            $('#modal').modal('show');
-            $('.modal-title').text('Edit User'); 
+            $('#default-modal').removeClass('hidden');
+            $('.modal-title').text('Edit User');
+            $('.button-title').text('Update user');
+            showModal(); 
 
-            $('#password-input').hide();
+            $('.password-input').hide();
             $('#email-input').hide();
         },
         error: function (textStatus)
@@ -27,6 +43,14 @@ function updateData(id) {
 
 function save() {
     const id = $('#id').val();
+    const password = $('#password').val();
+    const passwordConfirm = $('#password_confirm').val();
+
+    if (password !== passwordConfirm) {
+        showAlert('error', 'Error', 'Password and Konfirmasi Password do not match.');
+        return;
+    }
+
     const url = id ? `${base_url}dashboard/users/edit/${id}` : `${base_url}dashboard/users`;
     
     $.ajax({

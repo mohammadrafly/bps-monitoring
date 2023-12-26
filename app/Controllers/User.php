@@ -36,7 +36,7 @@ class User extends BaseController
         }
 
         return view('pages/dashboard/users/index', [
-            'data' => $model->findAll(),
+            'data' => $model->where('id !=', session()->get('id'))->findAll(),
             'title' => 'Data User'
         ]);
     }

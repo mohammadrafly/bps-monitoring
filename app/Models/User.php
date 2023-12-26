@@ -18,6 +18,7 @@ class User extends Model
         'username',
         'password',
         'role',
+        'profile',
         'created_at',
         'updated_at'
     ];

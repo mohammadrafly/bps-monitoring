@@ -12,9 +12,9 @@ class Admin extends Seeder
     {
         $model = new User();
         $data = [
-            'name' => 'Admin',
+            'name' => 'Administrator',
             'username' => 'admin',
-            'password' => password_hash('admin', PASSWORD_DEFAULT),
+            'password' => password_hash('admin123', PASSWORD_DEFAULT),
             'role' => 'admin',
         ];
         $model->insert($data);

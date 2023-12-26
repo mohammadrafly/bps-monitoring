@@ -1,12 +1,24 @@
+$('#default-modal .close-button').on('click', function() {
+    hideModal();
+});
+
+function hideModal() {
+    $('#default-modal').addClass('hidden');
+    $('#form')[0].reset();
+    location.reload();
+}
+
+function showModal() {
+    $('#default-modal').removeClass('hidden');
+}
+
 function updateData(id) {
     save_method = 'update';
-    $('#form')[0].reset(); 
     $.ajax({
         url : `${base_url}dashboard/employee/edit/${id}`,
         type: 'GET',
         dataType: 'JSON',
-        success: function(respond)
-        {   
+        success: function(respond) {   
             console.log(respond)
             $('[name="id"]').val(respond.data.id);
             $('[name="nama_ks"]').val(respond.data.nama_ks);
@@ -14,14 +26,12 @@ function updateData(id) {
             $('[name="target"]').val(respond.data.target);
             $('[name="realisasi"]').val(respond.data.realisasi);
             $('[name="total_absolut"]').val(respond.data.total_absolut);
-            $('#modal').modal('show');
-            $('.modal-title').text('Edit Employee'); 
-
-            $('#password-input').hide();
-            $('#email-input').hide();
+            $('#default-modal').removeClass('hidden');
+            $('.modal-title').text('Edit Employee');
+            $('.button-title').text('Update employee');
+            showModal(); 
         },
-        error: function (textStatus)
-        {
+        error: function (textStatus) {
             alert(textStatus);
         }
     });

@@ -31,6 +31,11 @@ class Users extends Migration
             'role' => [
                 'type' => 'ENUM("admin", "operator")',
                 'null' => false,
+            ],  
+            'profile' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
