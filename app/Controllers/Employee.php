@@ -51,7 +51,7 @@ class Employee extends BaseController
             $data = [
                 'nama_ks' => $this->request->getVar('nama_ks'),
                 'nama_petugas' => $this->request->getVar('nama_petugas'),
-                'target' => $this->request->getVar('target'),
+                'target' => 100,
                 'realisasi' => $this->request->getVar('realisasi'),
                 'total_absolut' => $this->request->getVar('total_absolut'),
                 'updated_at' => date('Y-m-d H:i:s')
