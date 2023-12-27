@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="input" class="block mb-2 text-sm font-medium text-gray-500">Target</label>
-                                            <input type="number" id="target" name="target" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan Target" required="">
+                                            <input type="number" id="target" name="target" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan Target" value="100" disabled>
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="input" class="block mb-2 text-sm font-medium text-gray-500">Realisasi</label>
@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="input" class="block mb-2 text-sm font-medium text-gray-500">Total Absolut</label>
-                                            <input type="number" id="total_absolut" name="total_absolut" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan Total Absolut" required="">
+                                            <input type="number" id="total_absolut" name="total_absolut" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan Total Absolut" required="" readonly>
                                         </div>
                                     </div>
                                     <button type="button" onclick="save()" class="button-title text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -178,5 +178,16 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script src="<?= base_url('assets/js/Employee.js') ?>"></script>
+
+<script>
+    function updateTotalAbsolut() {
+        var targetValue = parseFloat(document.getElementById("target").value) || 0;
+        var realisasiValue = parseFloat(document.getElementById("realisasi").value) || 0;
+        var totalAbsolut = targetValue + realisasiValue;
+        document.getElementById("total_absolut").value = totalAbsolut;
+    }
+
+    document.getElementById("realisasi").addEventListener("input", updateTotalAbsolut);
+</script>
 
 <?= $this->endSection() ?>
