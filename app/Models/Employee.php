@@ -19,6 +19,8 @@ class Employee extends Model
         'target',
         'realisasi',
         'total_absolut',
+        'updated_at',
+        'created_at'
     ];
 
     // Dates
