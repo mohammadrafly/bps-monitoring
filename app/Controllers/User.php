@@ -49,6 +49,7 @@ class User extends BaseController
                 'name' => $this->request->getVar('name'),
                 'role' => $this->request->getVar('role'),
                 'username' => $this->request->getVar('username'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
     
             if ($model->update($id, $data)) {
@@ -56,7 +57,6 @@ class User extends BaseController
             } else {
                 return $this->createResponse(false, 'error', 'Failed', 'User gagal diupdate.');
             }
-            
         }
 
         return $this->response->setJSON([

@@ -54,6 +54,7 @@ class Employee extends BaseController
                 'target' => $this->request->getVar('target'),
                 'realisasi' => $this->request->getVar('realisasi'),
                 'total_absolut' => $this->request->getVar('total_absolut'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
     
             if ($model->update($id, $data)) {
