@@ -5,7 +5,7 @@ $('#default-modal .close-button').on('click', function() {
 function hideModal() {
     $('#default-modal').addClass('hidden');
     $('#form')[0].reset();
-    location.reload();
+    //location.reload();
 }
 
 function showModal() {
@@ -96,5 +96,5 @@ function showAlert(icon, title, text, callback) {
         timer: 3000,
         showCancelButton: false,
         showConfirmButton: false
-    }).then(() => location.reload());
+    })//.then(() => location.reload());
 }
