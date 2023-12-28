@@ -29,6 +29,6 @@ $routes->group('dashboard', ['filter' => 'auth'], function($routes) {
     //ProfileOps
     $routes->group('profile', function($routes) {
         $routes->match(['POST', 'GET'], 'update/(:any)', 'Dashboard::profile/$1');
-        $routes->post('update/password/(:any)', 'Dashboard::changePassword/$1');
+        $routes->post('ganti/password/(:any)', 'Dashboard::changePassword/$1');
     });
 });

@@ -40,7 +40,7 @@ class Employee extends BaseController
 
         return view('pages/dashboard/employee/index', [
             'data' => $model->findAll(),
-            'title' => 'Data Employee'
+            'title' => 'Data Progres'
         ]);
     }
 
