@@ -79,7 +79,7 @@
                                 <td class="border px-4 py-2"><?= $no++ ?></td>
                                 <td class="border px-4 py-2"><?= $row['nama_petugas'] ?></td>
                                 <td class="border px-4 py-2"><?= $row['target'] ?></td>
-                                <td class="border px-4 py-2"><?= $row['total_absolut'] ?></td>
+                                <!-- <td class="border px-4 py-2"></td> -->
                                 <td class="border px-4 py-2"><?= ($row['realisasi'] / $row['target']) * 100 ?>%</td>
                             </tr>
                         <?php endforeach ?>
