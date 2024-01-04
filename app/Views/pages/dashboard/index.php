@@ -66,10 +66,10 @@
                 <table id="bps-datatable" class="display table-auto w-full text-gray-600">
                     <thead>
                         <tr>
-                            <th class="border px-4 py-2">#</th>
+                            <th class="border px-4 py-2">No</th>
                             <th class="border px-4 py-2">Nama Petugas</th>
                             <th class="border px-4 py-2">Target</th>
-                            <th class="border px-4 py-2">Absolut</th>
+                            <!-- <th class="border px-4 py-2">Absolut</th> -->
                             <th class="border px-4 py-2">Realisasi (%)</th>
                         </tr>
                     </thead>
