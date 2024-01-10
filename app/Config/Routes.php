@@ -19,6 +19,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function($routes) {
         $routes->match(['POST', 'GET'], 'edit/(:num)', 'User::edit/$1');
         $routes->get('delete/(:num)', 'User::delete/$1');
     });
+    //TanamanOps
+    $routes->group('tanaman', function($routes) {
+        $routes->match(['POST', 'GET'], '/', 'Tanaman::index');
+        $routes->match(['POST', 'GET'], 'edit/(:num)', 'Tanaman::edit/$1');
+        $routes->get('delete/(:num)', 'Tanaman::delete/$1');
+    });
     //EmployeeOps
     $routes->group('employee', function($routes) {
         $routes->match(['POST', 'GET'], '/', 'Employee::index');

@@ -138,4 +138,16 @@ class Employee extends Model
             ->get()
             ->getResultArray();
     }    
+
+    public function getAllDataJoin() {
+        return $this->db->table('employee')
+            ->select('
+                tanaman.nama_tanaman,
+                employee.*
+            ')
+            ->join('tanaman', 'employee.nama_ks = tanaman.id')
+            ->orderBy('employee.created_at', 'DESC')
+            ->get()
+            ->getResultArray();
+    }
 }
