@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Employee as EmployeeModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use App\Models\Tanaman;
 
 class Employee extends BaseController
 {
@@ -22,6 +23,7 @@ class Employee extends BaseController
     public function index()
     {
         $model = new EmployeeModel();
+        $modelTanaman = new Tanaman();
         if ($this->request->getMethod(true) === 'POST') {
             $data = [
                 'nama_ks' => $this->request->getVar('nama_ks'),
@@ -39,8 +41,10 @@ class Employee extends BaseController
         }
 
         return view('pages/dashboard/employee/index', [
-            'data' => $model->findAll(),
-            'title' => 'Data Progres'
+        //dd([
+            'data' => $model->getAllDataJoin(),
+            'title' => 'Data Progres',
+            'dataTanaman' => $modelTanaman->findAll(),
         ]);
     }
 
