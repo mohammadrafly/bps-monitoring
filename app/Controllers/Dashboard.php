@@ -55,7 +55,7 @@ class Dashboard extends BaseController
                 ]);
             }
 
-            return redirect()->to('dashboard/profile/update/'.$id)->with('success', 'Berhasil update data profile');
+            return redirect()->to('dashboard/profile/update/'.$id)->with('success', 'Berhasil update data profile, silahakan login ulang');
         }
 
         return view('pages/dashboard/profile', [
