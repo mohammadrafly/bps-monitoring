@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Tanaman as ModelTanaman;
-use App\Models\Employee;
+use App\Models\Progres;
 
 class Tanaman extends BaseController
 {
@@ -63,9 +63,9 @@ class Tanaman extends BaseController
     public function delete($id)
     {
         $modelTanaman = new ModelTanaman();
-        $modelEmployee = new Employee();
+        $modelProgres = new Progres();
     
-        if ($modelEmployee->where('nama_ks', $id)->countAllResults() > 0) {
+        if ($modelProgres->where('nama_ks', $id)->countAllResults() > 0) {
             return $this->createResponse(false, 'error', 'Failed', 'Tanaman tidak dapat dihapus karena terkait dengan progres.');
         }
     

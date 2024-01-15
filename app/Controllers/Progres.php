@@ -40,10 +40,10 @@ class Progres extends BaseController
             }
         }
 
-        //$isAdmin = session()->get('role');
+        $isAdmin = session()->get('role');
         return view('pages/dashboard/progres/index', [
         //dd([
-            'data' => $model->getAllData(),
+            'data' => $isAdmin === 'admin' ? $model->getAllData() : $model->getDataById(session()->get('id')),
             'title' => 'Data Progres',
             'dataTanaman' => $modelTanaman->findAll(),
         ]);
