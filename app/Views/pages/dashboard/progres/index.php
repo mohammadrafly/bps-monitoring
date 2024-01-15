@@ -41,7 +41,7 @@
                             </div>
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
-                                <form class="p-4 md:p-5" action="<?= base_url('dashboard/employee/export') ?>" method="post">
+                                <form class="p-4 md:p-5" action="<?= base_url('dashboard/progres/export') ?>" method="post">
                                     <div date-rangepicker class="flex items-center">
                                         <div class="relative">
                                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
