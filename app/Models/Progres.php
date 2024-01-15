@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Employee extends Model
+class Progres extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'employee';
+    protected $table            = 'progres';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -15,11 +15,11 @@ class Employee extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'nama_ks',
-        'nama_petugas',
+        'id_operator',
         'target',
         'realisasi',
         'total_absolut',
-        'updated_at',
+        'created_at',
         'created_at'
     ];
 
@@ -27,7 +27,7 @@ class Employee extends Model
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $updatedField  = 'created_at';
     protected $deletedField  = 'deleted_at';
 
     // Validation
@@ -69,7 +69,7 @@ class Employee extends Model
 
         $lastWeekDate = $this->lastWeek($formattedDateTime);
 
-        $totalLastWeek = $this->db->table('employee')->where('created_at <=', $lastWeekDate)->countAllResults();
+        $totalLastWeek = $this->db->table('progres')->where('created_at <=', $lastWeekDate)->countAllResults();
         return $totalLastWeek;
     }
 
@@ -79,7 +79,7 @@ class Employee extends Model
     
         $thisWeekStartDate = $this->getWeekStartDate($formattedDateTime);
 
-        $totalThisWeek = $this->db->table('employee')->where('created_at >=', $thisWeekStartDate)->countAllResults();
+        $totalThisWeek = $this->db->table('progres')->where('created_at >=', $thisWeekStartDate)->countAllResults();
         return $totalThisWeek;
     }
 
@@ -89,7 +89,13 @@ class Employee extends Model
     
         $thisWeekStartDate = $this->getWeekStartDate($formattedDateTime);
 
-        $totalThisWeek = $this->db->table('employee')->where('created_at >=', $thisWeekStartDate);
+        $totalThisWeek = $this->db->table('progres')
+            ->select('
+                progres.*,
+                user.name as name
+            ')
+            ->join('user', 'progres.id_operator = user.id')
+            ->where('progres.created_at >=', $thisWeekStartDate);
         return $totalThisWeek;
     }
     
@@ -113,7 +119,7 @@ class Employee extends Model
 
         $lastWeekDate = $this->lastWeek($formattedDateTime);
 
-        $result = $this->db->table('employee')
+        $result = $this->db->table('progres')
             ->select('DATE(created_at) as date, COUNT(*) as total')
             ->where('created_at >=', $lastWeekDate)
             ->groupBy('DATE(created_at)')
@@ -132,21 +138,38 @@ class Employee extends Model
     }
 
     public function getDataByRangeDate($start, $end) {
-        return $this->db->table('employee')
+        return $this->db->table('progres')
             ->where('DATE(created_at) >=', $start)
             ->where('DATE(created_at) <=', $end)
             ->get()
             ->getResultArray();
     }    
 
-    public function getAllDataJoin() {
-        return $this->db->table('employee')
+    public function getAllData() {
+        return $this->db->table('progres')
             ->select('
                 tanaman.nama_tanaman,
-                employee.*
+                progres.*,
+                user.*
             ')
-            ->join('tanaman', 'employee.nama_ks = tanaman.id')
-            ->orderBy('employee.created_at', 'DESC')
+            ->join('tanaman', 'progres.nama_ks = tanaman.id')
+            ->join('user', 'progres.id_operator = user.id')
+            ->orderBy('progres.created_at', 'DESC')
+            ->get()
+            ->getResultArray();
+    }
+
+    public function getDataById($id) {
+        return $this->db->table('progres')
+            ->select('
+                tanaman.nama_tanaman,
+                progres.*,
+                user.name as name
+            ')
+            ->join('tanaman', 'progres.nama_ks = tanaman.id')
+            ->join('user', 'progres.id_operator = user.id')
+            ->where('id_operator', $id)
+            ->orderBy('progres.created_at', 'DESC')
             ->get()
             ->getResultArray();
     }

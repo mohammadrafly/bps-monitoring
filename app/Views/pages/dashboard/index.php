@@ -20,7 +20,7 @@
             </svg>
             <div class="ml-3 font-medium text-gray-600">
                 <p class="mb-2">Total Progres</p>
-                <h6 class="mb-0"><?= $employee ?></h6>
+                <h6 class="mb-0"><?= $progres ?></h6>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
                         <?php $no = 1; foreach ($data as $row): ?>
                             <tr>
                                 <td class="border px-4 py-2"><?= $no++ ?></td>
-                                <td class="border px-4 py-2"><?= $row['nama_petugas'] ?></td>
+                                <td class="border px-4 py-2"><?= $row['name'] ?></td>
                                 <td class="border px-4 py-2"><?= $row['target'] ?></td>
                                 <!-- <td class="border px-4 py-2"></td> -->
                                 <td class="border px-4 py-2"><?= ($row['realisasi'] / $row['target']) * 100 ?>%</td>

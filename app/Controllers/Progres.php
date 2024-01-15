@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Employee as EmployeeModel;
+use App\Models\Progres as ProgresModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\Tanaman;
 
-class Employee extends BaseController
+class Progres extends BaseController
 {
     private function createResponse($status, $icon, $title, $text)
     {
@@ -22,27 +22,28 @@ class Employee extends BaseController
     
     public function index()
     {
-        $model = new EmployeeModel();
+        $model = new ProgresModel();
         $modelTanaman = new Tanaman();
         if ($this->request->getMethod(true) === 'POST') {
             $data = [
                 'nama_ks' => $this->request->getVar('nama_ks'),
-                'nama_petugas' => $this->request->getVar('nama_petugas'),
+                'id_operator' => session()->get('id'),
                 'target' => 100,
                 'realisasi' => $this->request->getVar('realisasi'),
                 'total_absolut' => $this->request->getVar('total_absolut'),
             ];
     
-            if ($model->insert($data)) {
-                return $this->createResponse(true, 'success', 'Success', 'berhasil membuat employee.');
+            if ($model->insert($data) && session()->get('role') === 'operator') {
+                return $this->createResponse(true, 'success', 'Success', 'berhasil membuat progres.');
             } else {
-                return $this->createResponse(false, 'error', 'Failed', 'gagal membuat employee.');
+                return $this->createResponse(false, 'error', 'Failed', 'gagal membuat progres.');
             }
         }
 
-        return view('pages/dashboard/employee/index', [
+        //$isAdmin = session()->get('role');
+        return view('pages/dashboard/progres/index', [
         //dd([
-            'data' => $model->getAllDataJoin(),
+            'data' => $model->getAllData(),
             'title' => 'Data Progres',
             'dataTanaman' => $modelTanaman->findAll(),
         ]);
@@ -50,21 +51,20 @@ class Employee extends BaseController
 
     public function edit($id)
     {
-        $model = new EmployeeModel();
+        $model = new ProgresModel();
         if ($this->request->getMethod(true) === 'POST') {
             $data = [
                 'nama_ks' => $this->request->getVar('nama_ks'),
-                'nama_petugas' => $this->request->getVar('nama_petugas'),
                 'target' => 100,
                 'realisasi' => $this->request->getVar('realisasi'),
                 'total_absolut' => $this->request->getVar('total_absolut'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
     
-            if ($model->update($id, $data)) {
-                return $this->createResponse(true, 'success', 'Success', 'Employee telah diupdate.');
+            if ($model->update($id, $data) && session()->get('id') === $this->request->getVar('id_operator')) {
+                return $this->createResponse(true, 'success', 'Success', 'Progres telah diupdate.');
             } else {
-                return $this->createResponse(false, 'error', 'Failed', 'Employee gagal diupdate.');
+                return $this->createResponse(false, 'error', 'Failed', 'Progres gagal diupdate.');
             }
         }
 
@@ -75,16 +75,16 @@ class Employee extends BaseController
 
     public function delete($id)
     {
-        $model = new EmployeeModel();
+        $model = new ProgresModel();
         if (! $model->where('id', $id)->delete($id)) {
-            return $this->createResponse(true, 'error', 'Failed', 'gagal menghapus employee.');
+            return $this->createResponse(true, 'error', 'Failed', 'gagal menghapus progres.');
         } 
-        return $this->createResponse(true, 'success', 'Success', 'berhasil menghapus employee.');
+        return $this->createResponse(true, 'success', 'Success', 'berhasil menghapus progres.');
     }
 
     public function export()
     {
-        $model = new EmployeeModel();
+        $model = new ProgresModel();
 
         $start = date('Y-m-d', strtotime($this->request->getVar('start')));
         $end = date('Y-m-d', strtotime($this->request->getVar('end')));        

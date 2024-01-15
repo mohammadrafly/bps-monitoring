@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-class Employees extends Migration
+class Progres extends Migration
 {
     public function up()
     {
@@ -20,7 +20,7 @@ class Employees extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'nama_petugas' => [
+            'id_operator' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
@@ -46,11 +46,11 @@ class Employees extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('employee');
+        $this->forge->createTable('progres');
     }
 
     public function down()
     {
-        $this->forge->dropTable('employee');
+        $this->forge->dropTable('progres');
     }
 }

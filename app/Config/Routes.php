@@ -25,12 +25,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function($routes) {
         $routes->match(['POST', 'GET'], 'edit/(:num)', 'Tanaman::edit/$1');
         $routes->get('delete/(:num)', 'Tanaman::delete/$1');
     });
-    //EmployeeOps
-    $routes->group('employee', function($routes) {
-        $routes->match(['POST', 'GET'], '/', 'Employee::index');
-        $routes->match(['POST', 'GET'], 'edit/(:num)', 'Employee::edit/$1');
-        $routes->get('delete/(:num)', 'Employee::delete/$1');
-        $routes->post('export', 'Employee::export');
+    //ProgresOps
+    $routes->group('progres', function($routes) {
+        $routes->match(['POST', 'GET'], '/', 'Progres::index');
+        $routes->match(['POST', 'GET'], 'edit/(:num)', 'Progres::edit/$1');
+        $routes->get('delete/(:num)', 'Progres::delete/$1');
+        $routes->post('export', 'Progres::export');
     });
     //ProfileOps
     $routes->group('profile', function($routes) {

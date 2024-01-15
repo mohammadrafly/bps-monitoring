@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Employee;
+use App\Models\Progres;
 use App\Models\User;
 
 class Dashboard extends BaseController
@@ -21,15 +21,16 @@ class Dashboard extends BaseController
     public function index()
     {
         $user = New User();
-        $employee = new Employee();
+        $progres = new Progres();
         return view('pages/dashboard/index', [
+        //dd([
             'user' => $user->countAll(),
-            'data' => $employee->getDataThisWeek()->get()->getResultArray(),
-            'employee' => $employee->countAll(),
-            'getTotalLastWeek' => $employee->getTotalLastWeek(),
-            'getTotalThisWeek' => $employee->getTotalThisWeek(),
-            'persen' => $employee->getPercentageSurplus(),
-            'chartData' => $employee->getDataForLast7Days()
+            'data' => $progres->getDataThisWeek()->get()->getResultArray(),
+            'progres' => $progres->countAll(),
+            'getTotalLastWeek' => $progres->getTotalLastWeek(),
+            'getTotalThisWeek' => $progres->getTotalThisWeek(),
+            'persen' => $progres->getPercentageSurplus(),
+            'chartData' => $progres->getDataForLast7Days()
         ]);
     }
 

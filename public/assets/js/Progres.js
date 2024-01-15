@@ -15,20 +15,20 @@ function showModal() {
 function updateData(id) {
     save_method = 'update';
     $.ajax({
-        url : `${base_url}dashboard/employee/edit/${id}`,
+        url : `${base_url}dashboard/progres/edit/${id}`,
         type: 'GET',
         dataType: 'JSON',
         success: function(respond) {   
             console.log(respond)
             $('[name="id"]').val(respond.data.id);
             $('[name="nama_ks"]').val(respond.data.nama_ks);
-            $('[name="nama_petugas"]').val(respond.data.nama_petugas);
+            $('[name="id_operator"]').val(respond.data.id_operator);
             $('[name="target"]').val(respond.data.target);
             $('[name="realisasi"]').val(respond.data.realisasi);
             $('[name="total_absolut"]').val(respond.data.total_absolut);
             $('#default-modal').removeClass('hidden');
-            $('.modal-title').text('Edit Employee');
-            $('.button-title').text('Update employee');
+            $('.modal-title').text('Edit Progres');
+            $('.button-title').text('Update progres');
             showModal(); 
         },
         error: function (textStatus) {
@@ -39,7 +39,7 @@ function updateData(id) {
 
 function save() {
     const id = $('#id').val();
-    const url = id ? `${base_url}dashboard/employee/edit/${id}` : `${base_url}dashboard/employee`;
+    const url = id ? `${base_url}dashboard/progres/edit/${id}` : `${base_url}dashboard/progres`;
     
     $.ajax({
       url,
@@ -72,7 +72,7 @@ function deleteData(id) {
       }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: `${base_url}dashboard/employee/delete/${id}`,
+                url: `${base_url}dashboard/progres/delete/${id}`,
                 type: 'GET',
                 dataType: 'JSON',
                 success: function (respond) {

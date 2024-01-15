@@ -4,13 +4,16 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use App\Models\Tanaman;
+use App\Models\User;
 
 class Dummy extends Seeder
 {
     public function run()
     {
         $model = new Tanaman();
+        $user = new User();
         $allRecords = $model->findAll();
+        $allOperators = $user->where('role', 'operator')->findAll();
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 100; $i++) {
@@ -24,9 +27,11 @@ class Dummy extends Seeder
 
             $createdAt = $faker->dateTimeBetween('-14 days', 'now')->format('Y-m-d H:i:s');
 
+            $randomOperator = $allOperators[array_rand($allOperators)];
+
             $data = [
                 'nama_ks'         => $randomId,
-                'nama_petugas'    => $faker->name,
+                'id_operator'     => $randomOperator['id'],
                 'target'          => 100,
                 'realisasi'       => random_int(1, 100),
                 'total_absolut'   => 0,
@@ -35,7 +40,7 @@ class Dummy extends Seeder
 
             $data['total_absolut'] = $data['target'] + $data['realisasi'];
 
-            $this->db->table('employee')->insert($data);
+            $this->db->table('progres')->insert($data);
         }
     }
 }
